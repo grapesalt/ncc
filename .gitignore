@@ -45,6 +45,5 @@ ENV/
 env.bak/
 venv.bak/
 
-# Project
-# remove all generated images
+# Remove output directory
 output/
