@@ -10,7 +10,7 @@ All images have creative common license.
 import requests
 
 
-def get_images(author: str):
+def get_images(author: str, n: int = 10):
     """
     Get images of the author
 
@@ -18,10 +18,12 @@ def get_images(author: str):
     ----------
     author: str
         The name of the author of the quote
+    n: int
+        The number of images to be returned
     """
 
     # Openverse API
-    IMAGES_URL = f"https://api.openverse.engineering/v1/images/?q={author}"
+    IMAGES_URL = f"https://api.openverse.engineering/v1/images/?q={author}&page_size={n}"
 
     res = requests.get(IMAGES_URL)
     images = res.json()["results"]

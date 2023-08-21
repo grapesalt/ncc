@@ -34,7 +34,7 @@ if __name__ == "__main__":
         image_window.geometry("600x800")
         image_window.minsize(600, 700)
 
-        images = get_images(quote["a"])
+        images = get_images(quote["a"], 20)
         count = -1
 
         aimages = []
@@ -69,7 +69,9 @@ if __name__ == "__main__":
             row=1, column=1, sticky="ew"
         )
         
-        tk.Button(image_window, text="submit", command=image_window.destroy).place(relx=0.5, rely=0.7, anchor='center')
+        tk.Button(image_window, text="submit", command=image_window.destroy).grid(
+            row=2, column=1, sticky="ew"
+        )
 
         right()
 
