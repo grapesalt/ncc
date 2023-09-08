@@ -23,7 +23,9 @@ def get_images(author: str, n: int = 10):
     """
 
     # Openverse API
-    IMAGES_URL = f"https://api.openverse.engineering/v1/images/?q={author}&page_size={n}"
+    IMAGES_URL = (
+        f"https://api.openverse.engineering/v1/images/?q={author}&page_size={n}"
+    )
 
     res = requests.get(IMAGES_URL)
     images = res.json()["results"]

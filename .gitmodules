@@ -1,0 +1,3 @@
+[submodule "submodules/azure-ttk-theme"]
+	path = submodules/azure-ttk-theme
+	url = https://github.com/rdbende/Azure-ttk-theme.git

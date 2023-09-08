@@ -15,7 +15,7 @@ from time import gmtime, strftime
 from PIL import Image, ImageFont, ImageDraw
 
 
-def create_image(quote: str, image_url: str, color: tuple) -> None:
+def create_image(quote: str, image_url: str, output: str, color: tuple) -> None:
     """
     Create the quote image
 
@@ -28,7 +28,6 @@ def create_image(quote: str, image_url: str, color: tuple) -> None:
     """
 
     TIMESTAMP = strftime("%H:%M:%S", gmtime())
-    OUTPUT_DIR = "output"  # Path where generated images are stored
 
     # Temporary image. Stored in temporary directory
     T_IMG_NAME = path.join(gettempdir(), f"qimage-{TIMESTAMP}.jpg")
@@ -57,13 +56,17 @@ def create_image(quote: str, image_url: str, color: tuple) -> None:
     img.paste(qimg, (0, 0))
 
     # Load fonts
-    afont = ImageFont.truetype("assets/fonts/Montserrat-Bold.ttf", 50) # Font for the author
-    qfont = ImageFont.truetype("assets/fonts/Montserrat-Regular.ttf", 58) # Font for the quote
+    afont = ImageFont.truetype(
+        "assets/fonts/Montserrat-Bold.ttf", 50
+    )  # Font for the author
+    qfont = ImageFont.truetype(
+        "assets/fonts/Montserrat-Regular.ttf", 58
+    )  # Font for the quote
 
     ImageDraw.fontmode = "L"  # Enable anti-aliasing for fonts
 
     ImageDraw.Draw(img).text(
-        (382, HEIGHT/2), quote["a"], (0, 0, 0), font=afont
+        (382, HEIGHT / 2), quote["a"], (0, 0, 0), font=afont
     )  # Add author
     ImageDraw.Draw(img).text(
         (131, 833), textwrap.fill(quote["q"], 30), (0, 0, 0), font=qfont
@@ -71,7 +74,7 @@ def create_image(quote: str, image_url: str, color: tuple) -> None:
 
     # Save the final image
 
-    if not path.exists(OUTPUT_DIR):
-        makedirs(OUTPUT_DIR)
+    if not path.exists(output):
+        makedirs(output)
 
-    img.save(path.join(OUTPUT_DIR, f'quote-{quote["a"]}-{TIMESTAMP}.jpg'))
+    img.save(path.join(output, f'quote-{quote["a"]}-{TIMESTAMP}.jpg'))
