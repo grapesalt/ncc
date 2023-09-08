@@ -6,7 +6,7 @@ Creates an image with a random quote from [Zen Quotes](https://zenquotes.io) and
 
 1) Clone the repository
 ```sh
-git clone https://github.com/grapesalt/ncc.git
+git clone --recurse-submodules https://github.com/grapesalt/ncc.git
 ```
 
 2) Install the required libraries
